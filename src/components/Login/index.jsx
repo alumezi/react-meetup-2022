@@ -1,21 +1,12 @@
-import { useNavigate } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
-
-const Login = () => {
-  const navigate = useNavigate();
-  const { login } = useAuth();
-
-  function handleSubmit(event) {
+const Login = ({ onSubmit }) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const { username, password } = event.target.elements;
-
-    login({
+    onSubmit({
       username: username.value,
       password: password.value,
-    }).then(() => {
-      navigate("/dashboard");
     });
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>

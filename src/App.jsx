@@ -10,6 +10,12 @@ const Dashboard = () => <h1>Dashboard (Private)</h1>;
 const Settings = () => <h1>Settings (Private)</h1>;
 
 const App = () => {
+  const handleSubmit = () => {
+    function handleSubmit(event) {
+      const { username, password } = event.target.elements;
+    }
+  };
+
   return (
     <>
       <Nav />
@@ -39,7 +45,7 @@ const App = () => {
             </RequireAuth>
           }
         />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login onSubmit={handleSubmit} />} />
       </Routes>
     </>
   );
