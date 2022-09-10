@@ -3,9 +3,16 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Login from ".";
 
+const mockedSetState = jest.fn();
+
+jest.mock("../../hooks/useAuth", () => {
+  return () => ({
+    login: mockedSetState,
+  });
+});
+
 test("submitting the form calls onSubmit with username and password", async () => {
-  const handleSubmit = jest.fn();
-  render(<Login onSubmit={handleSubmit} />);
+  render(<Login />);
   const username = "chucknorris";
   const password = "i need no password";
 
@@ -13,9 +20,9 @@ test("submitting the form calls onSubmit with username and password", async () =
   await userEvent.type(screen.getByLabelText(/password/i), password);
   await userEvent.click(screen.getByRole("button", { name: /submit/i }));
 
-  expect(handleSubmit).toHaveBeenCalledWith({
+  expect(mockedSetState).toHaveBeenCalledWith({
     username,
     password,
   });
-  expect(handleSubmit).toHaveBeenCalledTimes(1);
+  expect(mockedSetState).toHaveBeenCalledTimes(1);
 });

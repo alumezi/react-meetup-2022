@@ -1,4 +1,3 @@
-import { randomNumber } from "add-two-numbers-package";
 import { addThreeNumbers } from ".";
 
 jest.mock("add-two-numbers-package", () => {

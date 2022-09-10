@@ -1,8 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { login } = useAuth();
 
   function handleSubmit(event) {
@@ -12,8 +10,6 @@ const Login = () => {
     login({
       username: username.value,
       password: password.value,
-    }).then(() => {
-      navigate("/dashboard");
     });
   }
 
