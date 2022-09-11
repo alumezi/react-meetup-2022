@@ -17,6 +17,7 @@ const Login = ({ onSubmit }) => {
           name="username"
           type="text"
           className="username"
+          data-testid="username"
         />
       </div>
       <div>
@@ -26,10 +27,13 @@ const Login = ({ onSubmit }) => {
           name="password"
           type="password"
           className="password"
+          data-testid="password"
         />
       </div>
       <div>
-        <button type="submit">Submit</button>
+        <button type="submit" data-testid="submit">
+          Submit
+        </button>
       </div>
     </form>
   );

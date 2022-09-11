@@ -1,17 +1,40 @@
 import * as React from "react";
-import { render, screen } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { createRoot } from "react-dom/client";
 import Login from ".";
+import { act } from "react-dom/test-utils";
 
-test("submitting the form calls onSubmit with username and password", async () => {
+beforeEach(() => {
+  document.body.innerHTML = "";
+});
+
+global.IS_REACT_ACT_ENVIRONMENT = true;
+test("submitting the form calls onSubmit with username and password (without react testing lib)", async () => {
+  const div = document.createElement("div");
+  document.body.append(div);
+
+  const root = createRoot(div);
   const handleSubmit = jest.fn();
-  render(<Login onSubmit={handleSubmit} />);
-  const username = "chucknorris";
+  act(() => root.render(<Login onSubmit={handleSubmit} />));
+
+  const username = "Gani";
   const password = "i need no password";
 
-  await userEvent.type(screen.getByLabelText(/username/i), username);
-  await userEvent.type(screen.getByLabelText(/password/i), password);
-  await userEvent.click(screen.getByRole("button", { name: /submit/i }));
+  const usernameInput = div.querySelector('[data-testid="username"]');
+  const passwordInput = div.querySelector('[data-testid="password"]');
+  const submit = div.querySelector('[data-testid="submit"]');
+
+  usernameInput.value = username;
+  passwordInput.value = password;
+
+  submit.click();
+
+  //   const submitEvent = new MouseEvent("click", {
+  //     bubbles: true,
+  //     cancelable: true,
+  //     button: 0,
+  //   });
+
+  //   act(() => submit.dispatchEvent(submitEvent));
 
   expect(handleSubmit).toHaveBeenCalledWith({
     username,
