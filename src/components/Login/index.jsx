@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import Password from "../Inputs/Password";
+import Username from "../Inputs/Username";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,21 +23,11 @@ const Login = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="username-field">Username</label>
-        <input
-          id="username-field"
-          name="username"
-          type="text"
-          className="username"
-        />
+        <Username />
       </div>
       <div>
         <label htmlFor="password-field">Password</label>
-        <input
-          id="password-field"
-          name="password"
-          type="password"
-          className="password"
-        />
+        <Password />
       </div>
       <div>
         <button type="submit">Submit</button>
