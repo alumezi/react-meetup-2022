@@ -1,11 +1,14 @@
 const Password = () => {
   return (
-    <input
-      id="password-field"
-      name="password"
-      type="password"
-      className="password"
-    />
+    <>
+      <label htmlFor="password-field">Password</label>
+      <input
+        id="password-field"
+        name="password"
+        type="password"
+        className="password"
+      />
+    </>
   );
 };
 

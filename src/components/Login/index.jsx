@@ -22,11 +22,9 @@ const Login = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="username-field">Username</label>
         <Username />
       </div>
       <div>
-        <label htmlFor="password-field">Password</label>
         <Password />
       </div>
       <div>
