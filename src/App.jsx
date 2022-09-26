@@ -2,6 +2,7 @@ import * as React from "react";
 import { Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Nav from "./components/Nav";
+import Register from "./components/Register";
 import RequireAuth from "./components/RequireAuth";
 
 const Home = () => <h1>Home (Public)</h1>;
@@ -40,6 +41,7 @@ const App = () => {
           }
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </>
   );

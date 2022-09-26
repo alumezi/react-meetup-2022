@@ -25,7 +25,7 @@
 - Something else might break it!
 - Give to the client and tell him not to worry.
 
-### Meetup presentation template
+### Meetup presentation template suggestion
 
 1. Present a real-world scenario
 2. Present the issue
